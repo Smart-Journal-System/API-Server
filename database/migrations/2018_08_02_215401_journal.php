@@ -13,7 +13,26 @@ class Journal extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('journals', function (Blueprint $table) {
+            $table->engine = "InnoDB";
+
+            $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->string('title');
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::create('journal_settings', function (Blueprint $table) {
+            $table->engine = "InnoDB";
+
+            $table->increments('id');
+            $table->unsignedInteger('journal_id');
+            $table->timestamps();
+
+            $table->foreign('journal_id')->references('id')->on('journals');
+        });
     }
 
     /**
@@ -23,6 +42,7 @@ class Journal extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('journals');
+        Schema::dropIfExists('journal_settings');
     }
 }
