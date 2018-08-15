@@ -17,7 +17,10 @@ class Journal extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->string('title');
+
+            $table->string('name');
+            $table->string('initials');
+
             $table->timestamps();
         });
 

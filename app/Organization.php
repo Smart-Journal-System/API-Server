@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Organization extends Model
 {
+    use HasUUID;
+
+    public $incrementing = false;
+
     protected $fillable = [
-        'user_id', 'name'
+        'name'
     ];
 }

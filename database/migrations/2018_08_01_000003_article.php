@@ -17,6 +17,7 @@ class Article extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
+
             $table->string('name', 256);
             $table->string('slug', 256);
         });
@@ -24,10 +25,11 @@ class Article extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->increments('id');
+            $table->uuid('id');
+
             $table->unsignedInteger('journal_id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('organization_id');
+
+            $table->uuid('user_id');
 
             // TODO: Make field not nullable
             $table->unsignedInteger('article_status_id')->nullable();
@@ -36,8 +38,9 @@ class Article extends Migration
             $table->timestamps();
 
             $table->foreign('journal_id')->references('id')->on('journals');
+
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('organization_id')->references('id')->on('organizations');
+
             $table->foreign('article_status_id')->references('id')->on('article_statuses');
         });
     }
