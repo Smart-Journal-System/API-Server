@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -23,8 +23,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
     }
 
@@ -51,5 +49,14 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+
+        Route::get('{any?}', function ($any = null) {
+            // TODO: Change this to retrieve a default error message
+            // and properties from some sort of configuration file
+            return Response::json([
+                'status' => false,
+                'message' => 'Not found'
+            ]);
+        })->where('any', '.*');
     }
 }

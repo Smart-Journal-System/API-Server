@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 
-require(app_path() . "/../routes/authentication/index.php");
+$appPath = app_path();
 
-require(app_path() . "/../routes/articles/index.php");
-
-require(app_path() . "/../routes/journals/index.php");
+require($appPath . '/../routes/authentication/index.php');
+require($appPath . '/../routes/articles/index.php');
+require($appPath . '/../routes/journals/index.php');
