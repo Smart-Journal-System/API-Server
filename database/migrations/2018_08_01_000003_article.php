@@ -38,9 +38,7 @@ class Article extends Migration
             $table->timestamps();
 
             $table->foreign('journal_id')->references('id')->on('journals');
-
             $table->foreign('user_id')->references('id')->on('users');
-
             $table->foreign('article_status_id')->references('id')->on('article_statuses');
         });
     }
