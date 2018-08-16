@@ -30,7 +30,8 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
-    public function address() {
+    public function address()
+    {
         return $this->hasOne('address');
     }
 
@@ -54,7 +55,8 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function organizations() {
+    public function organizations()
+    {
         return $this->belongsToMany('App\Organization', 'organization_users');
     }
 }

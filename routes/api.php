@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+use App\Journal;
+
 $appPath = app_path();
 
 require($appPath . '/../routes/authentication/index.php');

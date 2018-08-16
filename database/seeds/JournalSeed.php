@@ -1,6 +1,7 @@
 <?php
 
 use App\Journal;
+use App\JournalArticleField;
 
 use Illuminate\Database\Seeder;
 
@@ -29,7 +30,17 @@ class JournalSeed extends Seeder
         ];
 
         foreach ($journals as $journal) {
-            Journal::create($journal);
+            $journal = Journal::create($journal);
+
+            JournalArticleField::create([
+                'slug' => 'title',
+                'journal_id' => $journal->id
+            ]);
+
+            JournalArticleField::create([
+                'slug' => 'abstract',
+                'journal_id' => $journal->id
+            ]);
         }
     }
 }

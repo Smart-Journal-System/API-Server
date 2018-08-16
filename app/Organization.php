@@ -14,7 +14,8 @@ class Organization extends Model
         'name'
     ];
 
-    public function users() {
+    public function users()
+    {
         return $this->belongsToMany('App\User', 'organization_users');
     }
 }
