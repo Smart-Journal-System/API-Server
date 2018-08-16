@@ -10,11 +10,6 @@
         });
 
         Route::get('{articleId}', function($articleId) {
-            Article::create([
-                'title' => 'ASD',
-                'journal_id' => 1,
-                'user_id' => 1,
-                'organization_id' => 1,
-            ]);
+            return Article::where('id', '=', $articleId)->first();
         });
     });
