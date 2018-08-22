@@ -18,8 +18,21 @@ $appPath = app_path();
 // Please place all of your code here!
 Route::prefix('nikki')->group(function() {
     Route::post('/form', function(Request $request) {
-        dd($request);
-        echo 'Hi Nikki! Process a "form" here.';
+        // 1.)  Validate your data - I don't care how;
+        //      simply ensure that we recieve a title and that the User is logged in
+        // 2.)  Create a new Article; assign the Title and the User Id
+        // 3.)  Serve back the new Article object as the response
+
+        // Validate here...
+
+        // Create here...
+
+        // Serve here...
+
+        Response::json([
+            'status' => true,
+            'message' => 'Did you do it yet?'
+        ]);
     });
 });
 
